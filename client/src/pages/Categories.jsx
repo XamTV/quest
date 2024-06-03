@@ -5,7 +5,6 @@ import CategoryForm from "../components/CategoryForm";
 
 function Categories() {
   const categories = useLoaderData();
-  console.log(categories);
 
   return (
     <>

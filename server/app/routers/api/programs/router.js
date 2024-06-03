@@ -5,7 +5,6 @@ const router = express.Router();
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
-
 // Import program-related actions
 const {
   browse,
@@ -15,6 +14,7 @@ const {
   destroy,
 } = require("../../../controllers/programActions");
 
+const validateProgram = require("../../../services/validateProgram");
 // Route to get a list of programs
 router.get("/", browse);
 
@@ -22,10 +22,10 @@ router.get("/", browse);
 router.get("/:id", read);
 
 // Route to edit an existing program
-router.put("/:id", edit);
+router.put("/:id", validateProgram, edit);
 
 // Route to add a new program
-router.post("/", add);
+router.post("/", validateProgram, add);
 
 // Route to edit an existing program
 router.delete("/:id", destroy);
